@@ -1,0 +1,39 @@
+version: '3.8'
+
+networks:
+  proxy:
+    external: true
+  traefik:
+    external: true
+
+services:
+  traefik:
+    image: traefik:2.4
+    container_name: traefik
+    command:
+      - --api
+      - --api.insecure
+      - --api.dashboard
+      - --providers.docker
+      - --providers.docker.exposedbydefault=false
+      - -- providers.file.directory=.docker/traefik/conf/dynamic_conf
+      - -- providers.file.watch=true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.entrypoints=web, websecure"
+      - "traefik.http.routers.traefik.rule=Host(`api.docker.ru`) && PathPrefix(`/dashboard`)"
+      - "traefik.http.routers.traefik.tls=true"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.services.traefik-traefik.loadbalancer.server.port=80"
+    ports:
+      - 80:80
+      - 443:443
+      - 8081:8080
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - .docker/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+    networks:
+      - proxy
+      - traefik
+    restart: always
