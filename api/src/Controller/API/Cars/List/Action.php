@@ -29,9 +29,9 @@ class Action extends AbstractController
         try {
             $carList = $entityManager->getRepository(Property::class)->findAll();
 
-            $response = $serializer->serialize(
+            $response = $serializer->normalize(
                 $carList,
-                'json',
+                null,
                 [AbstractNormalizer::GROUPS => ['property:list']]
             );
 
