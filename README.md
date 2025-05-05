@@ -22,3 +22,9 @@ docker push ghcr.io/psychofanimal/credit-car/database:latest
 ## Traefik
 ### Dashboard
 https://api.docker.ru/dashboard/#/ 
+
+## Added api.docker.ru into file /etc/hosts
+127.0.0.1 api.docker.ru
+
+## Load fixture
+php bin/console doctrine:fixtures:load
