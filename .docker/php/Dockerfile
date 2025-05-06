@@ -1,18 +1,9 @@
 FROM php:8.2-fpm
 
-ARG TIMEZONE
-RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone \
-    && printf '[PHP]\ndate.timezone = "%s"\n', ${TIMEZONE} > /usr/local/etc/php/conf.d/tzone.ini \
-    && "date"
-
-COPY .docker/php/php.ini /usr/local/etc/php/conf.d/docker-php-config.ini
-COPY .docker/php/php-fpm.conf /usr/local/etc/php-fpm.conf
-COPY .docker/php/opcache.ini /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
+WORKDIR /app
 
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends apt-utils
-#RUN pecl install xdebug \
-#    && docker-php-ext-enable xdebug
 
 RUN apt-get install -y \
     gnupg \
@@ -51,8 +42,6 @@ RUN apt remove -y ${PHPIZE_DEPS} \
     && rm -rf /tmp/* \
         /var/cache/*/* \
         /var/lib/apt/lists/*
-
-WORKDIR /app
 
 CMD ["php-fpm", "-F", "-R"]
 
