@@ -21,6 +21,7 @@
         "symfony/property-info": "7.2.*",
         "symfony/runtime": "7.2.*",
         "symfony/serializer": "7.2.*",
+        "symfony/validator": "7.2.*",
         "symfony/yaml": "7.2.*"
     },
     "config": {
@@ -76,7 +77,6 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^4.1",
         "symfony/maker-bundle": "^1.63",
-        "symfony/stopwatch": "7.2.*",
-        "symfony/web-profiler-bundle": "7.2.*"
+        "symfony/stopwatch": "7.2.*"
     }
 }

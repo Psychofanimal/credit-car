@@ -1,0 +1,153 @@
+type: collection.insomnia.rest/5.0
+name: Test
+meta:
+  id: wrk_cc551870f1914c78ad0abbaf4f00323f
+  created: 1746468348484
+  modified: 1746468348484
+collection:
+  - name: API
+    meta:
+      id: fld_cb6d839bc1b74800b7a9be583b99ee22
+      created: 1746468360746
+      modified: 1746468360746
+      sortKey: -1746468360746
+    children:
+      - url: https://api.docker.ru/api/v1/cars
+        name: Get all cars
+        meta:
+          id: req_a3796e95247c4ce7ae7b537d2dc17bf2
+          created: 1746468366300
+          modified: 1746523163479
+          isPrivate: false
+          sortKey: -1746468366300
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: https://api.docker.ru/api/v1/cars/1
+        name: Get car by id
+        meta:
+          id: req_43b0bbf9d0a64b6683d69b37687e4192
+          created: 1746470196481
+          modified: 1746523143055
+          isPrivate: false
+          sortKey: -1745978360153
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: https://api.docker.ru/api/v1/test
+        name: "404"
+        meta:
+          id: req_aad115c8788c40178c7b588f354ce2ad
+          created: 1746470224938
+          modified: 1746523146602
+          isPrivate: false
+          sortKey: -1745733357079.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: https://api.docker.ru/api/v1/credit/calculate
+        name: Calculate Credit
+        meta:
+          id: req_03e2e0254e5043e08f3153a1bfe81f93
+          created: 1746523118190
+          modified: 1746534066979
+          isPrivate: false
+          sortKey: -1745610855542.75
+        method: GET
+        parameters:
+          - name: price
+            value: "1000"
+            id: pair_c9eed765e41040959f88037f74d4c969
+            disabled: false
+          - name: initialPayment
+            value: "210000"
+            id: pair_37bd822917b7491086304fb7b914a5b6
+          - name: loanTerm
+            value: "16"
+            id: pair_93d9601a8f324e8881db1a6ede9d50b0
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: https://api.docker.ru/api/v1/request
+        name: Request
+        meta:
+          id: req_b16719b909f64ead8eaecd26f3827b58
+          created: 1746548084246
+          modified: 1746548947896
+          isPrivate: false
+          sortKey: -1745549604774.375
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"carId": 5,
+            	"programId": 203,
+            	"initialPayment": 12321,
+            	"loanTerm": 12000
+            }
+        parameters:
+          - id: pair_03e9b37cbedc40a3bd6a2cf48f0b443a
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_c66dcdcbdd7e8402fc85fdb67c71b73ec2ef2d8f
+    created: 1746468348594
+    modified: 1746468348594
+environments:
+  name: Base Environment
+  meta:
+    id: env_c66dcdcbdd7e8402fc85fdb67c71b73ec2ef2d8f
+    created: 1746468348516
+    modified: 1746468348516
+    isPrivate: false

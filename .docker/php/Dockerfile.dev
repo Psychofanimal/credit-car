@@ -1,9 +1,8 @@
 FROM php:8.2-fpm
 
-WORKDIR /app
-
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends apt-utils
+
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 
@@ -44,6 +43,8 @@ RUN apt remove -y ${PHPIZE_DEPS} \
     && rm -rf /tmp/* \
         /var/cache/*/* \
         /var/lib/apt/lists/*
+
+WORKDIR /app
 
 CMD ["php-fpm", "-F", "-R"]
 

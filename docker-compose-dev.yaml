@@ -13,7 +13,7 @@ volumes:
 
 services:
   app:
-#    image: ghcr.io/psychofanimal/credit-car/api-getway:latest
+#    image: ghcr.io/psychofanimal/Credit-car/api-getway:latest
     build:
       context: .
       dockerfile: .docker/php/Dockerfile.dev
@@ -57,7 +57,7 @@ services:
       - .docker/nginx/conf.d/app.conf:/etc/nginx/conf.d/app.conf:ro
 
   db:
-#    image: ghcr.io/psychofanimal/credit-car/api-getway:latest
+#    image: ghcr.io/psychofanimal/Credit-car/api-getway:latest
     build:
       context: .docker/db
       dockerfile: Dockerfile

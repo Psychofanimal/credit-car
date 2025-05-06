@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Brand;
+use App\Entity\CalcStartegy;
 use App\Entity\Model;
 use App\Entity\Property;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -53,6 +54,27 @@ class AppFixtures extends Fixture
         $property->setPhoto('');
         $property->setPrice('5735900');
         $manager->persist($property);
+
+        $calcStrategy = new CalcStartegy();
+        $calcStrategy->setTitle('ВТБ "Лайт"');
+        $calcStrategy->setInterestRate(15.5);
+        $calcStrategy->setMonthlyPayment(20000);
+        $calcStrategy->setProgramId(101);
+        $manager->persist($calcStrategy);
+
+        $calcStrategy = new CalcStartegy();
+        $calcStrategy->setTitle('Сбер "Кабала"');
+        $calcStrategy->setInterestRate(45.5);
+        $calcStrategy->setMonthlyPayment(120000);
+        $calcStrategy->setProgramId(666);
+        $manager->persist($calcStrategy);
+
+        $calcStrategy = new CalcStartegy();
+        $calcStrategy->setTitle('Alfa Energy');
+        $calcStrategy->setInterestRate(12.3);
+        $calcStrategy->setMonthlyPayment(9800);
+        $calcStrategy->setProgramId(203);
+        $manager->persist($calcStrategy);
 
         $manager->flush();
     }

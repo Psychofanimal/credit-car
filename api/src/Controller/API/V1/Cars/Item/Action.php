@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller\API\Cars\List;
+namespace App\Controller\API\V1\Cars\Item;
 
 use App\Entity\Property;
 use Doctrine\ORM\EntityManagerInterface;
@@ -13,26 +13,27 @@ use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Throwable;
 
-#[Route('/api')]
+#[Route('/api/v1')]
 class Action extends AbstractController
 {
     /**
      * @throws Exception
      */
-    #[Route('/cars', name: 'app_get_car_list', methods: ['GET'])]
+    #[Route('/cars/{id}', name: 'app_get_car_item', methods: ['GET'])]
     public function __invoke(
+        int $id,
         LoggerInterface $logger,
         EntityManagerInterface $entityManager,
         SerializerInterface $serializer
     ): JsonResponse
     {
         try {
-            $carList = $entityManager->getRepository(Property::class)->findAll();
+            $carItem = $entityManager->getRepository(Property::class)->find($id);
 
             $response = $serializer->normalize(
-                $carList,
+                $carItem,
                 null,
-                [AbstractNormalizer::GROUPS => ['property:list']]
+                [AbstractNormalizer::GROUPS => ['property:item']]
             );
 
             return new JsonResponse($response, Response::HTTP_OK);
